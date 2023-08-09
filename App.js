@@ -1,5 +1,10 @@
+import { SafeAreaView } from "react-native-web"
 import MyStack from "./Navigate"
 
 export default function App() {
-  <MyStack />
+  return (
+  <SafeAreaView>
+    <MyStack />
+  </SafeAreaView>
+  );
 };
