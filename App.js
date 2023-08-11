@@ -6,7 +6,6 @@ import Register from './screen/Register';
 const Stack = createStackNavigator();
 
 export default function App() {
-  console.log("entre tonto")
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Login'>

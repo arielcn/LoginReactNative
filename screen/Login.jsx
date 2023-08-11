@@ -22,7 +22,6 @@ function Login() {
           user,
           pwd,
         });
-        console.log(response);
         setError('');
         setLogeado('Logeado')
       } catch (e) {
