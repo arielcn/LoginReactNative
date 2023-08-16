@@ -30,31 +30,5 @@ app.post('/login', async(req, res) => {
   }
 })
 
-app.post('/register', async(req, res) => {
-  try {
-      console.log(req);
-      const usuarioData = req.body;
-      const result = await usuarioServices.insertUsuario(usuarioData)
-      if(result == false){
-          res.status(401).json({message: "error, usuario ya existente"});
-      }
-      else{
-          if (usuarioData.fkRol === 2) {
-              const vendedorExists = await usuarioServices.insertVendedor(usuarioData);
-              if (vendedorExists === false) {
-                  res.status(401).json({ message: "Error, vendedor ya existente" });
-              } else {
-                  res.status(201).json({ message: "Vendedor registrado correctamente!" });
-              }
-          }
-      }
-      
-  } catch (error) {
-      console.error(error);
-      res.status(500).json({error: 'insert failed'});
-  }
-});
-
-
 app.listen(5000)
 
