@@ -21,7 +21,7 @@ export default class usuarioServices {
 
     static insertUsuario = async (Usuario) => {
         let returnEntity = null;
-        const { Nombre, Mail, Contraseña }  = Usuario;
+        const { Nombre, Contraseña, Mail, }  = Usuario;
         let pool = await sql.connect(config);
         try {
             const exists = await this.checkExistingUser(Mail);
@@ -33,9 +33,9 @@ export default class usuarioServices {
                 
                 returnEntity = request
                     .input('Nombre', sql.NVarChar(150), Nombre)
-                    .input('Mail', sql.NVarChar(150), Mail)
                     .input('Contraseña', sql.NVarChar(150), Contraseña)
-                    .query('INSERT INTO Usuarios (Nombre, Mail, Contraseña) VALUES (@Nombre, @Mail, @Contraseña)')
+                    .input('Mail', sql.NVarChar(150), Mail)
+                    .query('INSERT INTO Usuarios (Nombre, Contraseña, Mail,) VALUES (@Nombre, @Contraseña, @Mail)')
             }
         } catch (error) {
             console.log(error);

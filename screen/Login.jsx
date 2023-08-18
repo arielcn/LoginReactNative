@@ -8,25 +8,25 @@ function Login() {
 
   const navigation = useNavigation();
   const [user, setUser] = useState('');
-  const [pwd, setPwd] = useState('');
+  const [mail, setMail] = useState('');
   const [error, setError] = useState('');
   const [logeado, setLogeado] = useState('');
 
   const handleLogin = async () => {
-    if (user === '' || pwd === '') {
+    if (user === '' || mail === '') {
       setError('no se puede dejar en blanco')
     }
     else {
       try {
         const response = await axios.post('http://localhost:5000/login', {
           user,
-          pwd,
+          mail,
         });
         setError('');
         setLogeado('Logeado')
       } catch (e) {
         console.error('Login error: ', e);
-        setError('User o Pwd incorrecto');
+        setError('User o Mail incorrectos');
         setLogeado('')
       }
     }
@@ -36,7 +36,7 @@ function Login() {
     <View style={styles.container}>
       <Text>Login</Text>
       <TextInput style={styles.TextInput} onChangeText={(text) => setUser(text)} placeholder="Username" />
-      <TextInput style={styles.TextInput} onChangeText={(text) => setPwd(text)} placeholder="Password" secureTextEntry />
+      <TextInput style={styles.TextInput} onChangeText={(text) => setMail(text)} placeholder="Mail" />
       {error ? <Text style={styles.errorText}>{error}</Text> : null}
       {logeado ? <Text style={styles.logeadoText}>{logeado}</Text> : null}
       <Button onPress={handleLogin} title='Logearse' />
