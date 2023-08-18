@@ -6,9 +6,10 @@ import axios from 'axios';
 const Register = () => {
   const navigation = useNavigation();
   const [error, setError] = useState('');
+  const [register, setRegister] = useState('')
 
     const handleRegister = async () => {
-        if (user === '' || pwd === '') {
+        if (user === '' || pwd === '' || email === '') {
           setError('no se puede dejar en blanco')
         }
         else {
@@ -16,14 +17,15 @@ const Register = () => {
             const response = await axios.post('http://localhost:5000/register', {
               user,
               pwd,
+              email
             });
             console.log(response);
             setError('');
-            setLogeado('Logeado')
+            setRegister('Registrado')
           } catch (e) {
             console.error('Login error: ', e);
             setError('User o Pwd incorrecto');
-            setLogeado('')
+            setRegister('')
           }
         }
       }
@@ -35,6 +37,8 @@ return (
     <TextInput placeholder="Email" />
     <TextInput placeholder="Contraseña" />
     <Button onPress={handleRegister} title='Logearse' />
+    {error ? <Text style={styles.errorText}>{error}</Text> : null}
+    {logeado ? <Text style={styles.logeadoText}>{logeado}</Text> : null}
     <Button onPress={() => { navigation.navigate('Login') }} title='Volver atras' />
   </View>
 );
