@@ -5,8 +5,12 @@ import axios from 'axios';
 
 const Register = () => {
   const navigation = useNavigation();
+  const [user, setUser] = useState('');
+  const [pwd, setPwd] = useState('');
+  const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [register, setRegister] = useState('')
+
 
     const handleRegister = async () => {
         if (user === '' || pwd === '' || email === '') {
@@ -33,12 +37,11 @@ const Register = () => {
 return (
   <View style={styles.container}>
     <Text>Register</Text>
-    <TextInput placeholder="Username" />
-    <TextInput placeholder="Email" />
-    <TextInput placeholder="Contraseña" />
+    <TextInput placeholder="Username" onKeyPress={(e) => setUser(user + e)}/>
+    <TextInput placeholder="Email" onKeyPress={(e) => setPwd(pwd + e)} />
+    <TextInput placeholder="Contraseña" onKeyPress={(e) => setEmail(email + e)}/>
     <Button onPress={handleRegister} title='Logearse' />
     {error ? <Text style={styles.errorText}>{error}</Text> : null}
-    {logeado ? <Text style={styles.logeadoText}>{logeado}</Text> : null}
     <Button onPress={() => { navigation.navigate('Login') }} title='Volver atras' />
   </View>
 );
