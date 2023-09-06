@@ -7,26 +7,26 @@ import { useNavigation } from '@react-navigation/native';
 function Login() {
 
   const navigation = useNavigation();
-  const [user, setUser] = useState('');
+  const [pwd, setPwd] = useState('');
   const [mail, setMail] = useState('');
   const [error, setError] = useState('');
   const [logeado, setLogeado] = useState('');
 
   const handleLogin = async () => {
-    if (user === '' || mail === '') {
+    if (mail === '' || pwd === '') {
       setError('no se puede dejar en blanco')
     }
     else {
       try {
-        const response = await axios.post('http://localhost:5000/login', {
-          user,
+        const response = await axios.post('http://localhost:5000/usuario/login', {
           mail,
+          pwd,
         });
         setError('');
         setLogeado('Logeado')
       } catch (e) {
         console.error('Login error: ', e);
-        setError('User o Mail incorrectos');
+        setError('Mail o Contraseña incorrectos');
         setLogeado('')
       }
     }
@@ -35,11 +35,12 @@ function Login() {
   return (
     <View style={styles.container}>
       <Text>Login</Text>
-      <TextInput style={styles.TextInput} onChangeText={(text) => setUser(text)} placeholder="Username" />
       <TextInput style={styles.TextInput} onChangeText={(text) => setMail(text)} placeholder="Mail" />
+      <TextInput style={styles.TextInput} onChangeText={(text) => setPwd(text)} placeholder="Contraseña" />
       {error ? <Text style={styles.errorText}>{error}</Text> : null}
       {logeado ? <Text style={styles.logeadoText}>{logeado}</Text> : null}
       <Button onPress={handleLogin} title='Logearse' />
+      <br></br>
       <Button onPress={() => { navigation.navigate('Register') }} title='Registrarse' />
       <StatusBar style="auto" />
     </View>

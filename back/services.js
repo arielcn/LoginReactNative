@@ -1,4 +1,4 @@
-import config from "./dbconfig";
+import config from "./dbconfig.js";
 import sql from 'mssql'
 
 export default class usuarioServices {

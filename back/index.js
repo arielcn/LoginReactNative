@@ -2,14 +2,15 @@ import { Router } from 'express';
 import usuarioServices from './services.js'
 const usuarioRouter = Router();
 
-const express = require('express')
-const app = express()
-var cors = require('cors')
+import express from 'express';
+import cors from "cors";
+
+const app = express();
 app.use(cors())
 app.use(express.json());
 console.log("puerto 5000")
 
-usuarioRouter.post('', async (req, res) => {
+usuarioRouter.post('/register', async (req, res) => {
   try {
     const usuarioData = req.body.usuario;
     const result = await usuarioServices.insertUsuario(usuarioData)
@@ -37,4 +38,8 @@ usuarioRouter.post('/login', async (req, res) => {
 
 });
 
+app.use("/usuario", usuarioRouter);
 
+app.listen(5000, "localhost", () => {
+  console.log("corriendo en puerto 5000");
+})

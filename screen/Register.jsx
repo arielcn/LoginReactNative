@@ -18,7 +18,7 @@ const Register = () => {
         }
         else {
           try {
-            const response = await axios.post('http://localhost:5000/register', {
+            const response = await axios.post('http://localhost:5000/usuario/register', {
               user,
               pwd,
               email
@@ -28,7 +28,7 @@ const Register = () => {
             setRegister('Registrado')
           } catch (e) {
             console.error('Login error: ', e);
-            setError('User o Pwd incorrecto');
+            setError('Mail ya existente ');
             setRegister('')
           }
         }
@@ -37,10 +37,11 @@ const Register = () => {
 return (
   <View style={styles.container}>
     <Text>Register</Text>
-    <TextInput placeholder="Username" onKeyPress={(e) => setUser(user + e)}/>
-    <TextInput placeholder="Email" onKeyPress={(e) => setPwd(pwd + e)} />
-    <TextInput placeholder="Contraseña" onKeyPress={(e) => setEmail(email + e)}/>
-    <Button onPress={handleRegister} title='Logearse' />
+    <TextInput placeholder="Usuario" onChangeText={(e) => setUser(user + e)}/>
+    <TextInput placeholder="Email" onChangeText={(e) => setPwd(pwd + e)} />
+    <TextInput placeholder="Contraseña" onChangeText={(e) => setEmail(email + e)}/>
+    <Button onPress={handleRegister} title='Registrarse' />
+    <br></br>
     {error ? <Text style={styles.errorText}>{error}</Text> : null}
     <Button onPress={() => { navigation.navigate('Login') }} title='Volver atras' />
   </View>
