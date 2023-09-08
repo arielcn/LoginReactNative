@@ -9,9 +9,7 @@ const Register = () => {
   const [pwd, setPwd] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
-  const [register, setRegister] = useState('')
-
-
+ 
     const handleRegister = async () => {
         if (user === '' || pwd === '' || email === '') {
           setError('no se puede dejar en blanco')
@@ -20,16 +18,14 @@ const Register = () => {
           try {
             const response = await axios.post('http://localhost:5000/usuario/register', {
               user,
-              pwd,
-              email
+              email,
+              pwd
             });
             console.log(response);
             setError('');
-            setRegister('Registrado')
           } catch (e) {
             console.error('Login error: ', e);
             setError('Mail ya existente ');
-            setRegister('')
           }
         }
       }
@@ -37,9 +33,9 @@ const Register = () => {
 return (
   <View style={styles.container}>
     <Text>Register</Text>
-    <TextInput placeholder="Usuario" onChangeText={(e) => setUser(user + e)}/>
-    <TextInput placeholder="Email" onChangeText={(e) => setPwd(pwd + e)} />
-    <TextInput placeholder="Contraseña" onChangeText={(e) => setEmail(email + e)}/>
+    <TextInput style={styles.TextInput} placeholder="Nombre" onChangeText={(text) => setUser(text)}/>
+    <TextInput style={styles.TextInput} placeholder="Email" onChangeText={(text) => setEmail(text)} />
+    <TextInput style={styles.TextInput} placeholder="Contraseña" onChangeText={(text) => setPwd(text)}/>
     <Button onPress={handleRegister} title='Registrarse' />
     <br></br>
     {error ? <Text style={styles.errorText}>{error}</Text> : null}
@@ -49,10 +45,6 @@ return (
 }
 
 const styles = StyleSheet.create({
-  logeadoText: {
-    color: 'green',
-    marginTop: 10,
-  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -60,7 +52,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   TextInput: {
-    borderWidth: 1,
+    borderWidth: 2,
     padding: 5,
     marginBottom: 5,
     borderRadius: 10,

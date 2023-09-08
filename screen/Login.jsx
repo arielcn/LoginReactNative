@@ -19,7 +19,7 @@ function Login() {
     else {
       try {
         const response = await axios.post('http://localhost:5000/usuario/login', {
-          mail,
+          email,
           pwd,
         });
         setError('');

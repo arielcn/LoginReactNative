@@ -1,8 +1,8 @@
 class Usuario {
     id;
-    usuario;
-    password;
+    nombre;
     email;
+    password;
 }
 
 export default Usuario;

@@ -13,7 +13,8 @@ console.log("puerto 5000")
 usuarioRouter.post('/register', async (req, res) => {
   try {
     const usuarioData = req.body.usuario;
-    const result = await usuarioServices.insertUsuario(usuarioData)
+    console.log(usuarioData);
+    const result = await usuarioServices.insertUsuario(usuarioData);
     if (result == false) {
       res.status(401).json({ message: "Error, usuario ya existente" });
     } else {
