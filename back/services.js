@@ -9,7 +9,6 @@ export default class usuarioServices {
             .input('Mail', sql.VarChar(150), Mail)
             .query('SELECT * FROM Usuarios WHERE Mail = @Mail');
         // Comprueba si el correo electrónico existe
-        console.log(result);
         if (result.recordset.length > 0) {
             return true;
             // El correo electrónico ya existe
@@ -21,7 +20,7 @@ export default class usuarioServices {
 
     static insertUsuario = async (Usuario) => {
         let returnEntity = null;
-        const { Nombre, Contraseña, Mail, }  = Usuario;
+        const { Nombre, Contraseña, Mail }  = Usuario;
         let pool = await sql.connect(config);
         try {
             const exists = await this.checkExistingUser(Mail);
@@ -35,7 +34,7 @@ export default class usuarioServices {
                     .input('Nombre', sql.NVarChar(150), Nombre)
                     .input('Contraseña', sql.NVarChar(150), Contraseña)
                     .input('Mail', sql.NVarChar(150), Mail)
-                    .query('INSERT INTO Usuarios (Nombre, Contraseña, Mail,) VALUES (@Nombre, @Contraseña, @Mail)')
+                    .query('INSERT INTO Usuarios (Nombre, Contraseña, Mail) VALUES (@Nombre, @Contraseña, @Mail)')
             }
         } catch (error) {
             console.log(error);

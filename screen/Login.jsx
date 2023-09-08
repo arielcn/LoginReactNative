@@ -10,7 +10,6 @@ function Login() {
   const [pwd, setPwd] = useState('');
   const [mail, setMail] = useState('');
   const [error, setError] = useState('');
-  const [logeado, setLogeado] = useState('');
 
   const handleLogin = async () => {
     if (mail === '' || pwd === '') {
@@ -19,15 +18,17 @@ function Login() {
     else {
       try {
         const response = await axios.post('http://localhost:5000/usuario/login', {
-          email,
-          pwd,
+          usuario: {
+            Mail: mail,
+            Contraseña: pwd
+          }
+         
         });
         setError('');
-        setLogeado('Logeado')
+        navigation.navigate('Login');
       } catch (e) {
         console.error('Login error: ', e);
         setError('Mail o Contraseña incorrectos');
-        setLogeado('')
       }
     }
   }
@@ -38,7 +39,6 @@ function Login() {
       <TextInput style={styles.TextInput} onChangeText={(text) => setMail(text)} placeholder="Mail" />
       <TextInput style={styles.TextInput} onChangeText={(text) => setPwd(text)} placeholder="Contraseña" />
       {error ? <Text style={styles.errorText}>{error}</Text> : null}
-      {logeado ? <Text style={styles.logeadoText}>{logeado}</Text> : null}
       <Button onPress={handleLogin} title='Logearse' />
       <br></br>
       <Button onPress={() => { navigation.navigate('Register') }} title='Registrarse' />
@@ -48,10 +48,6 @@ function Login() {
 }
 
 const styles = StyleSheet.create({
-  logeadoText: {
-    color: 'green',
-    marginTop: 10,
-  },
   container: {
     flex: 1,
     backgroundColor: '#fff',

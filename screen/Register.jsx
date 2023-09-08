@@ -9,6 +9,7 @@ const Register = () => {
   const [pwd, setPwd] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
+  const [registrado, setRegistrado] = useState('')
  
     const handleRegister = async () => {
         if (user === '' || pwd === '' || email === '') {
@@ -17,15 +18,23 @@ const Register = () => {
         else {
           try {
             const response = await axios.post('http://localhost:5000/usuario/register', {
-              user,
-              email,
-              pwd
+              usuario: {
+                Nombre: user,
+                Mail: email,
+                Contraseña: pwd
+              }
             });
             console.log(response);
             setError('');
+            setRegistrado('Creado');
+            setTimeout(() => {
+              navigation.navigate('Login');
+            }, 1000);
+
           } catch (e) {
             console.error('Login error: ', e);
             setError('Mail ya existente ');
+            setRegistrado('');
           }
         }
       }
@@ -39,6 +48,7 @@ return (
     <Button onPress={handleRegister} title='Registrarse' />
     <br></br>
     {error ? <Text style={styles.errorText}>{error}</Text> : null}
+    {registrado ? <Text style={styles.registradoText}>{registrado}</Text> : null}
     <Button onPress={() => { navigation.navigate('Login') }} title='Volver atras' />
   </View>
 );
@@ -59,6 +69,10 @@ const styles = StyleSheet.create({
   },
   errorText: {
     color: 'red',
+    margin: 10,
+  },
+  registradoText: {
+    color: 'green',
     margin: 10,
   },
 });

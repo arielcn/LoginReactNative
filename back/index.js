@@ -28,8 +28,7 @@ usuarioRouter.post('/register', async (req, res) => {
 });
 
 usuarioRouter.post('/login', async (req, res) => {
-  const usuario = await usuarioServices.getUsuarioByMailYContra(req.body.mail, req.body.pass)
-  console.log("ENDPOINT", usuario);
+  const usuario = await usuarioServices.getUsuarioByMailYContra(req.body.mail, req.body.pwd)
   if (!usuario) {
     res.status(401).json({ message: "Usuario no encontrado" });
   }
