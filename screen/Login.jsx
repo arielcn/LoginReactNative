@@ -10,6 +10,7 @@ function Login() {
   const [pwd, setPwd] = useState('');
   const [mail, setMail] = useState('');
   const [error, setError] = useState('');
+  const [logeado, setLogeado] = useState('');
 
   const handleLogin = async () => {
     if (mail === '' || pwd === '') {
@@ -22,13 +23,18 @@ function Login() {
             Mail: mail,
             Contraseña: pwd
           }
-         
         });
+        console.log(response);
         setError('');
-        navigation.navigate('Login');
+        setLogeado('Logeado');
+        setTimeout(() => {
+          const usuario = response.data;
+          navigation.navigate('Home', {usuario});
+        }, 1000);
       } catch (e) {
         console.error('Login error: ', e);
         setError('Mail o Contraseña incorrectos');
+        setLogeado('');
       }
     }
   }
@@ -36,11 +42,12 @@ function Login() {
   return (
     <View style={styles.container}>
       <Text>Login</Text>
-      <TextInput style={styles.TextInput} onChangeText={(text) => setMail(text)} placeholder="Mail" />
-      <TextInput style={styles.TextInput} onChangeText={(text) => setPwd(text)} placeholder="Contraseña" />
+      <TextInput style={styles.TextInput} placeholder="Mail" onChangeText={(text) => setMail(text)}  />
+      <TextInput style={styles.TextInput} placeholder="Contraseña" onChangeText={(text) => setPwd(text)}  />
       {error ? <Text style={styles.errorText}>{error}</Text> : null}
       <Button onPress={handleLogin} title='Logearse' />
       <br></br>
+      {logeado ? <Text style={styles.logeadoText}>{logeado}</Text> : null}
       <Button onPress={() => { navigation.navigate('Register') }} title='Registrarse' />
       <StatusBar style="auto" />
     </View>
@@ -62,6 +69,10 @@ const styles = StyleSheet.create({
   },
   errorText: {
     color: 'red',
+    margin: 10,
+  },
+  logeadoText: {
+    color: 'green',
     margin: 10,
   },
 });

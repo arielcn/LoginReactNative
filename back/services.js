@@ -13,7 +13,7 @@ export default class usuarioServices {
             return true;
             // El correo electrónico ya existe
         } else {
-            console.log("creado :)")
+            console.log("existe el mail")
             return false; // El correo electrónico no existe
         }
     }
@@ -42,18 +42,18 @@ export default class usuarioServices {
         return returnEntity;
     }
 
-    static getUsuarioByMailYContra = async (Mail, Contraseña) => {
+    static getUsuarioByMailYContra = async (usuario) => {
         let returnEntity = null;
-        const mailExistente = await this.checkExistingUser(Mail);
+        const mailExistente = await this.checkExistingUser(usuario.Mail);
         if (!mailExistente) { //se fija si existe el mail
-            console.log("Error: El correo electrónico no está registrado.");
+            console.log("Error: El correo electrónico no está registrado o es incorrecto.");
             return returnEntity;
         }
         try {
             let pool = await sql.connect(config);
             let result = await pool.request()
-                .input('Mail', sql.VarChar(150), Mail)
-                .input('Contraseña', sql.VarChar(150), Contraseña)
+                .input('Mail', sql.VarChar(150), usuario.Mail)
+                .input('Contraseña', sql.VarChar(150), usuario.Contraseña)
                 .query('SELECT * FROM Usuarios WHERE Mail = @Mail AND Contraseña = @Contraseña');
             console.log("login exitoso", result);
             returnEntity = result.recordsets[0][0];
