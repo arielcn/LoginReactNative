@@ -11,6 +11,7 @@ app.use(express.json());
 console.log("puerto 5000")
 
 usuarioRouter.put('/update/:id', async (req, res) => {
+  console.log("PEPE");
   try{
       await usuarioServices.updateUsuario(req.body.usuario)
       res.status(200).json({message: 'Usuario updated'});

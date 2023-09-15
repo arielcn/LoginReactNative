@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
 
 function EditarPerfil({ route }) {
   const navigation = useNavigation();
@@ -11,17 +12,15 @@ function EditarPerfil({ route }) {
 
   const handleEdit = () => {
     try {
-      const response = axios.post('http://localhost:5000/usuario/update/:id', {
-        usuario: {
-          Nombre: nombre,
-          Apellido: apellido,
-          Mail: mail,
-        }
+      usuario.Nombre = nombre;
+      usuario.Apellido = apellido;
+      usuario.Mail = mail;
+      const response = axios.put(`http://localhost:5000/usuario/update/${usuario.id}`, {
+        usuario
       });
       console.log(response);
-      setTimeout(() => {
-        navigation.navigate('Home');
-      }, 1000);
+      navigation.navigate('Perfil', {usuario});
+      console.log(apellido, usuario.id);
 
     } catch (e) {
       console.error('error: ', e);
@@ -46,13 +45,8 @@ function EditarPerfil({ route }) {
         placeholder={usuario.Mail}
         onChangeText={(text) => setMail(text)}
       />
-      <Button
-        style={styles.botonPerfil}
-        onPress={() => {
-          navigation.navigate("Home");
-        }}
-        title="Guardar"
-      />
+      <Button onPress={handleEdit} title='Guardar' />
+
     </View>
   );
 }
@@ -76,26 +70,3 @@ const styles = StyleSheet.create({
 });
 
 export default EditarPerfil;
-
-/*import { View } from "react-native-web";
-import { StyleSheet } from 'react-native';
-
-function CompletarPerfil() {
-
-  return(
-    <View style={styles.container}>
-      <h1>Mi perfil</h1>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-export default CompletarPerfil;*/

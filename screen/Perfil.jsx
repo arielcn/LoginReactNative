@@ -10,11 +10,11 @@ function Perfil({ route }) {
     <View style={styles.container}>
       <h1>Mi perfil</h1>
       <p>Nombre:</p>
-      <p>{usuario.Nombre}</p>
+      {usuario.Nombre !== null ? <p>{usuario.Nombre}</p> : <p>-</p>}
       <p>Apellido:</p>
       {usuario.Apellido !== null ? <p>{usuario.Apellido}</p> : <p>-</p>}
       <p>Email:</p>
-      <p>{usuario.Mail}</p>
+      {usuario.Mail !== null ? <p>{usuario.Mail}</p> : <p>-</p>}
       <Button
           style={styles.botonPerfil}
           onPress={() => {

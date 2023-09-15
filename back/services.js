@@ -45,8 +45,9 @@ export default class usuarioServices {
   };
 
   static updateUsuario = async (Usuario) => {
+    console.log("UPDATE", Usuario);
     let rowsAffected = 0;
-    const { Nombre, Apellido, Contraseña, Mail } = Usuario;
+    const { Id, Nombre, Apellido, Contraseña, Mail } = Usuario;
     try {
       let pool = await sql.connect(config);
       let result = await pool
@@ -54,12 +55,12 @@ export default class usuarioServices {
         .input("pId", sql.Int, Id)
         .input("pNombre", sql.NVarChar(150), Nombre)
         .input("pApellido", sql.NVarChar(150), Apellido)
-        .input("pContraseña", sql.NVarChar(150), Contraseña)
         .input("pMail", sql.NVarChar(150), Mail)
         .query(
-          `UPDATE Usuarios SET Nombre=@pNombre, Apellido=@pApellido, Contraseña=@pContraseña, Mail=@pMail WHERE Id=@pId`
+          `UPDATE Usuarios SET Nombre = @pNombre, Apellido = @pApellido, Mail = @pMail WHERE Id = @pId`
         );
       rowsAffected = result.rowsAffected;
+      console.log(result.rowsAffected);
     } catch (error) {
       console.log(error);
     }
