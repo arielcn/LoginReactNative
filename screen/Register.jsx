@@ -6,13 +6,14 @@ import axios from 'axios';
 const Register = () => {
   const navigation = useNavigation();
   const [user, setUser] = useState('');
+  const [apellido, setApellido] = useState('');
   const [pwd, setPwd] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [registrado, setRegistrado] = useState('')
  
     const handleRegister = async () => {
-        if (user === '' || pwd === '' || email === '') {
+        if (user === '' || apellido === '' || pwd === '' || email === '') {
           setError('no se puede dejar en blanco')
         }
         else {
@@ -20,6 +21,7 @@ const Register = () => {
             const response = await axios.post('http://localhost:5000/usuario/register', {
               usuario: {
                 Nombre: user,
+                Apellido: apellido,
                 Mail: email,
                 Contraseña: pwd
               }
@@ -43,6 +45,7 @@ return (
   <View style={styles.container}>
     <Text>Register</Text>
     <TextInput style={styles.TextInput} placeholder="Nombre" onChangeText={(text) => setUser(text)}/>
+    <TextInput style={styles.TextInput} placeholder="Apellido" onChangeText={(text) => setApellido(text)}/>
     <TextInput style={styles.TextInput} placeholder="Email" onChangeText={(text) => setEmail(text)} />
     <TextInput style={styles.TextInput} placeholder="Contraseña" onChangeText={(text) => setPwd(text)}/>
     <Button onPress={handleRegister} title='Registrarse' />

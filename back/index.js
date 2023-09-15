@@ -10,6 +10,16 @@ app.use(cors())
 app.use(express.json());
 console.log("puerto 5000")
 
+usuarioRouter.put('/update/:id', async (req, res) => {
+  try{
+      await usuarioServices.updateUsuario(req.body.usuario)
+      res.status(200).json({message: 'Usuario updated'});
+  }catch(error){
+      console.error(error);
+      res.status(500).json({error: 'Fallo el update'});
+  }
+});
+
 usuarioRouter.post('/register', async (req, res) => {
   try {
     const usuarioData = req.body.usuario;
