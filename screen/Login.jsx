@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   TextInput: {
     borderWidth: 1,
     padding: 5,
-    marginBottom: 5,
+    marginBottom: 10,
     borderRadius: 10,
   },
   errorText: {

@@ -12,14 +12,12 @@ function Perfil({ route }) {
   const { usuario } = route.params;
 
 
-  useEffect(async () => {
+  useEffect(() => {
     try {
-      const res = axios.get('http://localhost:5000/usuario/:id', {
-        id: usuario.Id
-      });
-      setNombre(res.Nombre)
-      setApellido(res.Apellido)
-      setMail(res.Mail)
+      const res = axios.get(`http://localhost:5000/usuario/${usuario.id}`);
+      setNombre(res.nombre)
+      setApellido(res.apellido)
+      setMail(res.mail)
     } catch (e) {
       console.error('get error: ', e);
     }
