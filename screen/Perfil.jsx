@@ -1,20 +1,39 @@
 import { View } from "react-native-web";
 import { StyleSheet, Button } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 function Perfil({ route }) {
+  const [nombre, setNombre] = useState("");
+  const [apellido, setApellido] = useState("");
+  const [mail, setMail] = useState("");
   const navigation = useNavigation();
   const { usuario } = route.params;
+
+
+  useEffect(async () => {
+    try {
+      const res = axios.get('http://localhost:5000/usuario/:id', {
+        id: usuario.Id
+      });
+      setNombre(res.Nombre)
+      setApellido(res.Apellido)
+      setMail(res.Mail)
+    } catch (e) {
+      console.error('get error: ', e);
+    }
+  })
 
   return (
     <View style={styles.container}>
       <h1>Mi perfil</h1>
       <p>Nombre:</p>
-      {usuario.Nombre !== null ? <p>{usuario.Nombre}</p> : <p>-</p>}
+      {nombre !== null ? <p>{nombre}</p> : <p>-</p>}
       <p>Apellido:</p>
-      {usuario.Apellido !== null ? <p>{usuario.Apellido}</p> : <p>-</p>}
+      {apellido !== null ? <p>{apellido}</p> : <p>-</p>}
       <p>Email:</p>
-      {usuario.Mail !== null ? <p>{usuario.Mail}</p> : <p>-</p>}
+      {mail !== null ? <p>{mail}</p> : <p>-</p>}
       <Button
           style={styles.botonPerfil}
           onPress={() => {

@@ -18,6 +18,19 @@ export default class usuarioServices {
     }
   };
 
+  static getById = async (id) => {
+    console.log('Estoy en: get by Id', id);
+    try {
+      let pool = await sql.connect(config);
+      await pool.request()
+        .input('pId', sql.Int, id)
+        .query('SELECT Nombre, Apellido, Mail FROM Usuarios WHERE Id = @pId');
+    }
+    catch (error) {
+      console.log(error);
+    }
+  }
+
   static insertUsuario = async (Usuario) => {
     let returnEntity = null;
     const { Nombre, Apellido, Contraseña, Mail } = Usuario;
@@ -46,8 +59,7 @@ export default class usuarioServices {
 
   static updateUsuario = async (Usuario) => {
     console.log("UPDATE", Usuario);
-    let rowsAffected = 0;
-    const { Id, Nombre, Apellido, Contraseña, Mail } = Usuario;
+    const { Id, Nombre, Apellido, Mail } = Usuario;
     try {
       let pool = await sql.connect(config);
       let result = await pool
@@ -59,12 +71,9 @@ export default class usuarioServices {
         .query(
           `UPDATE Usuarios SET Nombre = @pNombre, Apellido = @pApellido, Mail = @pMail WHERE Id = @pId`
         );
-      rowsAffected = result.rowsAffected;
-      console.log(result.rowsAffected);
     } catch (error) {
       console.log(error);
     }
-    return rowsAffected;
   };
 
   static getUsuarioByMailYContra = async (usuario) => {

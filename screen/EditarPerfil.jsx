@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
@@ -8,19 +8,28 @@ function EditarPerfil({ route }) {
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [mail, setMail] = useState("");
+  const [id, setId] = useState();
   const { usuario } = route.params;
+
+  useEffect(() => {
+    setId(usuario.id)
+    setNombre(usuario.Nombre  || "");
+    setApellido(usuario.Apellido || "");
+    setMail(usuario.Mail || "");
+  }, []);
+
 
   const handleEdit = () => {
     try {
-      usuario.Nombre = nombre;
-      usuario.Apellido = apellido;
-      usuario.Mail = mail;
       const response = axios.put(`http://localhost:5000/usuario/update/${usuario.id}`, {
-        usuario
+        usuario: {
+          Id: id,
+          Nombre: nombre,
+          Apellido: apellido,
+          Mail: mail,
+        }
       });
-      console.log(response);
       navigation.navigate('Perfil', {usuario});
-      console.log(apellido, usuario.id);
 
     } catch (e) {
       console.error('error: ', e);
@@ -32,20 +41,23 @@ function EditarPerfil({ route }) {
       <Text style={styles.title}>Mi Perfil</Text>
       <TextInput
         style={styles.TextInput}
-        placeholder={usuario.Nombre}
-        onChangeText={(text) => setNombre(text)}
+        value={nombre}
+        placeholder="Nombre"
+        onChangeText={(text) => {setNombre(text), console.log("aaaaa", nombre)}}
       />
       <TextInput
         style={styles.TextInput}
-        placeholder={usuario.Apellido !== null ? usuario.Apellido : "completar"}
+        value={apellido}
+        placeholder="Apellido"
         onChangeText={(text) => setApellido(text)}
       />
       <TextInput
         style={styles.TextInput}
-        placeholder={usuario.Mail}
+        value={mail}
+        placeholder="Mail"
         onChangeText={(text) => setMail(text)}
       />
-      <Button onPress={handleEdit} title='Guardar' />
+      <Button onPress={handleEdit} title='Guardar' type="submit" />
 
     </View>
   );

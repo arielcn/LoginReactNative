@@ -10,6 +10,16 @@ app.use(cors())
 app.use(express.json());
 console.log("puerto 5000")
 
+usuarioRouter.get('/:id', async (req, res) => {
+  try{
+    await usuarioServices.getById(req.params.id)
+    res.status(200).json({message: 'usuario get'})
+  }catch(error){
+    console.error(error);
+    res.status(200).json({message: 'usuario get'})
+  }
+});
+
 usuarioRouter.put('/update/:id', async (req, res) => {
   console.log("PEPE");
   try{
