@@ -9,12 +9,12 @@ function Perfil({ route }) {
   const [apellido, setApellido] = useState("");
   const [mail, setMail] = useState("");
   const navigation = useNavigation();
-  const { usuario } = route.params;
+  const { usuario } = route.Textarams;
 
 
   useEffect(() => {
     try {
-      const res = axios.get(`http://localhost:5000/usuario/${usuario.id}`);
+      const res = axios.get(`httText://localhost:5000/usuario/${usuario.id}`);
       setNombre(res.nombre)
       setApellido(res.apellido)
       setMail(res.mail)
@@ -25,19 +25,19 @@ function Perfil({ route }) {
 
   return (
     <View style={styles.container}>
-      <h1>Mi perfil</h1>
-      <p>Nombre:</p>
-      {nombre !== null ? <p>{nombre}</p> : <p>-</p>}
-      <p>Apellido:</p>
-      {apellido !== null ? <p>{apellido}</p> : <p>-</p>}
-      <p>Email:</p>
-      {mail !== null ? <p>{mail}</p> : <p>-</p>}
+      <Text style={styles.title}>Mi perfil</Text>
+      <Text>Nombre:</Text>
+      {nombre !== null ? <Text>{nombre}</Text> : <Text>-</Text>}
+      <Text>Apellido:</Text>
+      {apellido !== null ? <Text>{apellido}</Text> : <Text>-</Text>}
+      <Text>Email:</Text>
+      {mail !== null ? <Text>{mail}</Text> : <Text>-</Text>}
       <Button
           style={styles.botonPerfil}
           onPress={() => {
             navigation.navigate("EditarPerfil", {usuario});
           }}
-          title="Editar perfil"
+          title="Editar Perfil"
         />
     </View>
   );
@@ -52,6 +52,11 @@ const styles = StyleSheet.create({
   },
   botonPerfil: {
     width: "auto",
+  },
+  title: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 });
 

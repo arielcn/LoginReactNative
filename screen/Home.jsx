@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, StyleSheet, View } from "react-native";
+import { Button, StyleSheet, View, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 function Home({ route }) {
@@ -11,7 +11,7 @@ function Home({ route }) {
 
   return (
     <View style={styles.container}>
-      <h1>¡BIENVENIDO, {usuario.Nombre}!</h1>
+      <Text style={styles.title}>¡BIENVENIDO, {usuario.Nombre}!</Text>
       {tieneApellido ? (
         <Button
           style={styles.botonPerfil}
@@ -22,7 +22,7 @@ function Home({ route }) {
         />
       ) : (
         <div>
-        <p>Te faltan algunos datos!</p>
+        <Text>Te faltan algunos datos!</Text>
         <Button
           style={styles.botonPerfil}
           onPress={() => {
@@ -44,6 +44,12 @@ const styles = StyleSheet.create({
   },
   botonPerfil: {
     width: "auto",
+  }, 
+  title: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 36,
+    marginBottom: 20,
   },
 });
 

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import axios from 'axios';
@@ -43,16 +43,19 @@ const Register = () => {
 
 return (
   <View style={styles.container}>
-    <Text>Register</Text>
-    <TextInput style={styles.TextInput} placeholder="Nombre" onChangeText={(text) => setUser(text)}/>
-    <TextInput style={styles.TextInput} placeholder="Apellido" onChangeText={(text) => setApellido(text)}/>
-    <TextInput style={styles.TextInput} placeholder="Email" onChangeText={(text) => setEmail(text)} />
-    <TextInput style={styles.TextInput} placeholder="Contraseña" onChangeText={(text) => setPwd(text)}/>
-    <Button onPress={handleRegister} title='Registrarse' />
-    <br></br>
+    <Text style={styles.textRegister}>Register</Text>
+    <TextInput style={styles.textInput} placeholder="Nombre" onChangeText={(text) => setUser(text)}/>
+    <TextInput style={styles.textInput} placeholder="Apellido" onChangeText={(text) => setApellido(text)}/>
+    <TextInput style={styles.textInput} placeholder="Email" onChangeText={(text) => setEmail(text)} />
+    <TextInput style={styles.textInput} placeholder="Contraseña" onChangeText={(text) => setPwd(text)}/>
+    <Pressable style={styles.buttonRg} onPress={handleRegister}>
+      <Text style={styles.text}>Registrarse</Text>
+    </Pressable>
     {error ? <Text style={styles.errorText}>{error}</Text> : null}
     {registrado ? <Text style={styles.registradoText}>{registrado}</Text> : null}
-    <Button onPress={() => { navigation.navigate('Login') }} title='Volver atras' />
+    <Pressable style={styles.buttonVolver} onPress={() => { navigation.navigate('Login') }}>
+      <Text style={styles.textVolver}>Volver atrás</Text>
+    </Pressable>
   </View>
 );
 }
@@ -64,10 +67,29 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  TextInput: {
-    borderWidth: 2,
+  textRegister: {
+    marginBottom: 25,
+    padding: 10,
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  text: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
+  },
+  textVolver: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+
+  textInput: {
+    width: 200,
+    borderWidth: 1,
     padding: 5,
-    marginBottom: 5,
+    marginBottom: 15,
     borderRadius: 10,
   },
   errorText: {
@@ -78,6 +100,24 @@ const styles = StyleSheet.create({
     color: 'green',
     margin: 10,
   },
+  buttonRg: {
+    width: 130,
+    borderRadius: 25,
+    height: 30,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 10,
+    backgroundColor: 'black',
+  },
+  buttonVolver: {
+    width: 100,
+    height: 20,
+    borderRadius: 25,
+    alignItems:'center',
+    justifyContent: 'center',
+    marginTop: 7,
+    backgroundColor: 'black'
+  }
 });
 
 export default Register;

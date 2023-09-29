@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 function Login() {
@@ -29,7 +29,7 @@ function Login() {
         setLogeado('Logeado');
         setTimeout(() => {
           const usuario = response.data;
-          navigation.navigate('Home', {usuario});
+          navigation.navigate('Home', { usuario });
         }, 1000);
       } catch (e) {
         console.error('Login error: ', e);
@@ -41,14 +41,15 @@ function Login() {
 
   return (
     <View style={styles.container}>
-      <Text>Login</Text>
-      <TextInput style={styles.TextInput} placeholder="Mail" onChangeText={(text) => setMail(text)}  />
-      <TextInput style={styles.TextInput} placeholder="Contraseña" onChangeText={(text) => setPwd(text)}  />
+      <Text style={styles.textLogin}>Login</Text>
+      <TextInput style={styles.textInput} placeholder="Mail" onChangeText={(text) => setMail(text)} />
+      <TextInput style={styles.textInput} placeholder="Contraseña" onChangeText={(text) => setPwd(text)} />
       {error ? <Text style={styles.errorText}>{error}</Text> : null}
-      <Button onPress={handleLogin} title='Logearse' />
-      <br></br>
+      <Pressable style={styles.button} onPress={handleLogin}>
+        <Text style={styles.text}>Logearse</Text>
+      </Pressable>
       {logeado ? <Text style={styles.logeadoText}>{logeado}</Text> : null}
-      <Button onPress={() => { navigation.navigate('Register') }} title='Registrarse' />
+        <Text>¿No tienes cuenta? <Text style={styles.texto2} onPress={() => { navigation.navigate('Register') }}>Registrarse</Text></Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -61,10 +62,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  TextInput: {
+  textLogin: {
+    marginBottom: 25,
+    padding: 10,
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  textInput: {
+    width: 200,
     borderWidth: 1,
     padding: 5,
-    marginBottom: 10,
+    marginBottom: 15,
     borderRadius: 10,
   },
   errorText: {
@@ -75,6 +83,24 @@ const styles = StyleSheet.create({
     color: 'green',
     margin: 10,
   },
+  button: {
+    width: 130,
+    borderRadius: 25,
+    height: 30,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 10,
+    backgroundColor: 'black',
+  },
+  text: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    letterSpacing: 0.25,
+    color: 'white',
+  },
+  texto2: {
+    textDecorationLine: 'underline',
+  }
 });
 
 export default Login;
