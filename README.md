@@ -63,7 +63,7 @@
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#getting-started">empezando</a>
       <ul>
         <li><a href="#prerequisites">Prerequisitos</a></li>
         <li><a href="#installation">instalacion</a></li>
@@ -102,7 +102,7 @@ Utilice `BLANK_README.md` para comenzar.
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
+Esta sección debe enumerar los principales marcos/bibliotecas utilizados para iniciar su proyecto. Deje cualquier complemento/complemento para la sección de agradecimientos. Aquí están algunos ejemplos.
 
 * [![Next][Next.js]][Next-url]
 * [![React][React.js]][React-url]
@@ -125,7 +125,7 @@ Para poner en funcionamiento una copia local, siga estos sencillos pasos de ejem
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+Este es un ejemplo de cómo enumerar los elementos necesarios para utilizar el software y cómo instalarlos.
 * npm
   ```sh
   npm install npm@latest -g
@@ -133,7 +133,7 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+_A continuación se muestra un ejemplo de cómo puede instruir a su audiencia sobre cómo instalar y configurar su aplicación. Esta plantilla no depende de dependencias o servicios externos._
 
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
@@ -156,9 +156,9 @@ _Below is an example of how you can instruct your audience on installing and set
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Utilice este espacio para mostrar ejemplos útiles de cómo se puede utilizar un proyecto. Las capturas de pantalla, ejemplos de código y demostraciones adicionales funcionan bien en este espacio. También puede vincular a más recursos.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_Para más ejemplos, consulte la [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -175,55 +175,54 @@ _For more examples, please refer to the [Documentation](https://example.com)_
     - [ ] Chinese
     - [ ] Spanish
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+Véase [open issues](https://github.com/othneildrew/Best-README-Template/issues) para obtener una lista completa de las características propuestas (y problemas conocidos).
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">vovler arriba</a>)</p>
 
 
 
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Las contribuciones son las que hacen de la comunidad de código abierto un lugar increíble para aprender, inspirar y crear. Cualquier contribución que hagas será **muy apreciada**.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
+Si tiene alguna sugerencia que pueda mejorar esto, bifurque el repositorio y cree una solicitud de extracción. También puedes simplemente abrir un problema con la etiqueta "mejora".
+¡No olvides darle una estrella al proyecto! ¡Gracias de nuevo!
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+1. Bifurcar el proyecto
+2. Cree su rama de funciones (`git checkout -b feature/AmazingFeature`)
+3. Confirme sus cambios (`git commit -m 'Agregar alguna característica sorprendente'`)
+4. Empuje a la rama (`git push origin feature/AmazingFeature`)
+5. Abra una solicitud de extracción
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
 
 
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distribuido bajo la licencia MIT. Consulte `LICENCIA.txt` para obtener más información.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">vovler arriba</a>)</p>
 
 
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+tu nombre - [@your_twitter](https://twitter.com/your_username) - email@example.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Link del proyecto: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">vovler arriba</a>)</p>
 
 
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
+Utilice este espacio para enumerar los recursos que le resulten útiles y a los que le gustaría dar crédito. ¡He incluido algunos de mis favoritos para comenzar!
 * [Choose an Open Source License](https://choosealicense.com)
 * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
 * [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
@@ -233,7 +232,7 @@ Use this space to list resources you find helpful and would like to give credit 
 * [Font Awesome](https://fontawesome.com)
 * [React Icons](https://react-icons.github.io/react-icons/search)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">vovler arriba</a>)</p>
 
 
 
