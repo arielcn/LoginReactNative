@@ -81,7 +81,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Sobre el proyecto
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
@@ -100,7 +100,7 @@ Utilice `BLANK_README.md` para comenzar.
 
 
 
-### Built With
+### Construido con
 
 Esta sección debe enumerar los principales marcos/bibliotecas utilizados para iniciar su proyecto. Deje cualquier complemento/complemento para la sección de agradecimientos. Aquí están algunos ejemplos.
 
@@ -118,12 +118,12 @@ Esta sección debe enumerar los principales marcos/bibliotecas utilizados para i
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Empezando
 
 Este es un ejemplo de cómo puede dar instrucciones sobre cómo configurar su proyecto localmente.
 Para poner en funcionamiento una copia local, siga estos sencillos pasos de ejemplo.
 
-### Prerequisites
+### Prerequisitos
 
 Este es un ejemplo de cómo enumerar los elementos necesarios para utilizar el software y cómo instalarlos.
 * npm
@@ -131,7 +131,7 @@ Este es un ejemplo de cómo enumerar los elementos necesarios para utilizar el s
   npm install npm@latest -g
   ```
 
-### Installation
+### Instalación
 
 _A continuación se muestra un ejemplo de cómo puede instruir a su audiencia sobre cómo instalar y configurar su aplicación. Esta plantilla no depende de dependencias o servicios externos._
 
@@ -154,7 +154,7 @@ _A continuación se muestra un ejemplo de cómo puede instruir a su audiencia so
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Uso
 
 Utilice este espacio para mostrar ejemplos útiles de cómo se puede utilizar un proyecto. Las capturas de pantalla, ejemplos de código y demostraciones adicionales funcionan bien en este espacio. También puede vincular a más recursos.
 
@@ -165,7 +165,7 @@ _Para más ejemplos, consulte la [Documentation](https://example.com)_
 
 
 <!-- ROADMAP -->
-## Roadmap
+## Mapa vial
 
 - [x] Add Changelog
 - [x] Add back to top links
@@ -182,7 +182,7 @@ Véase [open issues](https://github.com/othneildrew/Best-README-Template/issues)
 
 
 <!-- CONTRIBUTING -->
-## Contributing
+## Contribuyendo
 
 Las contribuciones son las que hacen de la comunidad de código abierto un lugar increíble para aprender, inspirar y crear. Cualquier contribución que hagas será **muy apreciada**.
 
@@ -200,7 +200,7 @@ Si tiene alguna sugerencia que pueda mejorar esto, bifurque el repositorio y cre
 
 
 <!-- LICENSE -->
-## License
+## Licencia
 
 Distribuido bajo la licencia MIT. Consulte `LICENCIA.txt` para obtener más información.
 
@@ -209,7 +209,7 @@ Distribuido bajo la licencia MIT. Consulte `LICENCIA.txt` para obtener más info
 
 
 <!-- CONTACT -->
-## Contact
+## Contacto
 
 tu nombre - [@your_twitter](https://twitter.com/your_username) - email@example.com
 
@@ -220,7 +220,7 @@ Link del proyecto: [https://github.com/your_username/repo_name](https://github.c
 
 
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+## Conocimiento
 
 Utilice este espacio para enumerar los recursos que le resulten útiles y a los que le gustaría dar crédito. ¡He incluido algunos de mis favoritos para comenzar!
 * [Choose an Open Source License](https://choosealicense.com)
