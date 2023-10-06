@@ -18,26 +18,19 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
 
 
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/arielcn">
+    <img src="https://cdn.dribbble.com/users/1889528/screenshots/7239609/0aba6579301149.5cbf290c5a8dd.jpg" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">la mejor plantilla de README</h3>
+  <h3 align="center">Login RN</h3>
 
   <p align="center">
-    una increible plantilla de README para el inicio de tus proyectos!
+    El mejor login para tu aplicacion!
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explorar los docs »</strong></a>
     <br />
@@ -83,7 +76,7 @@
 <!-- ABOUT THE PROJECT -->
 ## Sobre el proyecto
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<img src='assets/screenshot.png' alt="Screenshot" width='80px' height='auto'></img>
 
 Hay muchas plantillas README excelentes disponibles en GitHub; sin embargo, no encontré uno que realmente se adaptara a mis necesidades, así que creé este mejorado. Quiero crear una plantilla README tan sorprendente que sea la última que necesites. Creo que esto es todo.
 
@@ -164,13 +157,11 @@ _Para más ejemplos, consulte la [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## RoadMap
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
+- [x] Login
+- [x] Register
+- [x] Editar Usuario
+- [x] Completar el perfil
+- [ ] Añadir foto de perfil
 
 Véase [open issues](https://github.com/othneildrew/Best-README-Template/issues) para obtener una lista completa de las características propuestas (y problemas conocidos).
 
