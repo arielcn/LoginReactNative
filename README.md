@@ -104,14 +104,11 @@ Utilice `BLANK_README.md` para comenzar.
 
 Esta sección debe enumerar los principales marcos/bibliotecas utilizados para iniciar su proyecto. Deje cualquier complemento/complemento para la sección de agradecimientos. Aquí están algunos ejemplos.
 
-* [![Next][Next.js]][Next-url]
+* [![React Native][reactnative.dev]]
+* [![Node.js][nodejs.org]]
 * [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -136,7 +133,7 @@ Este es un ejemplo de cómo enumerar los elementos necesarios para utilizar el s
 _A continuación se muestra un ejemplo de cómo puede instruir a su audiencia sobre cómo instalar y configurar su aplicación. Esta plantilla no depende de dependencias o servicios externos._
 
 1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+2. Clonar el repo
    ```sh
    git clone https://github.com/your_username_/Project-Name.git
    ```
@@ -179,41 +176,10 @@ Véase [open issues](https://github.com/othneildrew/Best-README-Template/issues)
 
 <p align="right">(<a href="#readme-top">vovler arriba</a>)</p>
 
-
-
-<!-- CONTRIBUTING -->
-## Contribuyendo
-
-Las contribuciones son las que hacen de la comunidad de código abierto un lugar increíble para aprender, inspirar y crear. Cualquier contribución que hagas será **muy apreciada**.
-
-Si tiene alguna sugerencia que pueda mejorar esto, bifurque el repositorio y cree una solicitud de extracción. También puedes simplemente abrir un problema con la etiqueta "mejora".
-¡No olvides darle una estrella al proyecto! ¡Gracias de nuevo!
-
-1. Bifurcar el proyecto
-2. Cree su rama de funciones (`git checkout -b feature/AmazingFeature`)
-3. Confirme sus cambios (`git commit -m 'Agregar alguna característica sorprendente'`)
-4. Empuje a la rama (`git push origin feature/AmazingFeature`)
-5. Abra una solicitud de extracción
-
-<p align="right">(<a href="#readme-top">volver arriba</a>)</p>
-
-
-
-<!-- LICENSE -->
-## Licencia
-
-Distribuido bajo la licencia MIT. Consulte `LICENCIA.txt` para obtener más información.
-
-<p align="right">(<a href="#readme-top">vovler arriba</a>)</p>
-
-
-
 <!-- CONTACT -->
 ## Contacto
 
-tu nombre - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Link del proyecto: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Link del proyecto: [https://github.com/arielcn/LoginReactNative](https://github.com/arielcn/LoginReactNative)
 
 <p align="right">(<a href="#readme-top">vovler arriba</a>)</p>
 
@@ -223,16 +189,9 @@ Link del proyecto: [https://github.com/your_username/repo_name](https://github.c
 ## Conocimiento
 
 Utilice este espacio para enumerar los recursos que le resulten útiles y a los que le gustaría dar crédito. ¡He incluido algunos de mis favoritos para comenzar!
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+* [Use React Bootstrap](https://react-bootstrap.netlify.app/)
 
-<p align="right">(<a href="#readme-top">vovler arriba</a>)</p>
+<p align="right">(<a href="#readme-top">volver arriba</a>)</p>
 
 
 
