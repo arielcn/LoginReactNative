@@ -76,16 +76,16 @@
 <!-- ABOUT THE PROJECT -->
 ## Sobre el proyecto
 
-<img src='assets/screenshot.png' alt="Screenshot" width='80px' height='auto'></img>
+<img src='assets/screenshot.png' alt="Screenshot" width='300px' height='auto'></img>
 
-Hay muchas plantillas README excelentes disponibles en GitHub; sin embargo, no encontré uno que realmente se adaptara a mis necesidades, así que creé este mejorado. Quiero crear una plantilla README tan sorprendente que sea la última que necesites. Creo que esto es todo.
+Un login adaptado a tus necesidades
 
-Este es el por qué:
-* Tu tiempo debe centrarse en crear algo sorprendente. Un proyecto que resuelve un problema y ayuda a otros
-* No deberías hacer las mismas tareas una y otra vez, como crear un archivo README desde cero.
-* Debes implementar los principios DRY por el resto de tu vida :sonríe:
+Porque:
+* Es veloz
+* Es estético
+* Es moderno
 
-Por supuesto, ninguna plantilla servirá para todos los proyectos, ya que sus necesidades pueden ser diferentes. Así que agregaré más en un futuro próximo. También puedes sugerir cambios bifurcando este repositorio y creando una solicitud de extracción o abriendo una incidencia. ¡Gracias a todas las personas que han contribuido a ampliar esta plantilla!
+Por supuesto, ningun otro Login tiene un doc readme como este, por lo que el nuestro es el mejor!!!!
 
 Utilice `BLANK_README.md` para comenzar.
 
