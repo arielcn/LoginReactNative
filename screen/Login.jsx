@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { StatusBar } from 'expo-status-bar';
 import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
