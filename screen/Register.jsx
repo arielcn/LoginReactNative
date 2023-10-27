@@ -1,63 +1,72 @@
 import { StyleSheet, Text, TextInput, View, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
-import axios from 'axios';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { setDoc, doc, getFirestore } from 'firebase/firestore'
 
 const Register = () => {
   const navigation = useNavigation();
-  const [user, setUser] = useState('');
+  const [nombre, setNombre] = useState({});
   const [apellido, setApellido] = useState('');
   const [pwd, setPwd] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [registrado, setRegistrado] = useState('')
- 
-    const handleRegister = async () => {
-        if (user === '' || apellido === '' || pwd === '' || email === '') {
-          setError('no se puede dejar en blanco')
-        }
-        else {
-          try {
-            const response = await axios.post('http://localhost:5000/usuario/register', {
-              usuario: {
-                Nombre: user,
-                Apellido: apellido,
-                Mail: email,
-                Contraseña: pwd
-              }
-            });
-            console.log(response);
-            setError('');
-            setRegistrado('Creado');
-            setTimeout(() => {
-              navigation.navigate('Login');
-            }, 1000);
 
-          } catch (e) {
-            console.error('Login error: ', e);
-            setError('Mail ya existente ');
-            setRegistrado('');
-          }
-        }
+  const handleRegister = async () => {
+    if (nombre === '' || apellido === '' || pwd === '' || email === '') {
+      setError('No se puede dejar en blanco')
+    }
+    else {
+      try {
+        const auth = getAuth();
+        const { user } = await createUserWithEmailAndPassword(
+          auth,
+          email,
+          pwd
+        );
+        const { uid } = user;
+        const db = getFirestore();
+        await setDoc(doc(db, "users", uid), {
+          nombre,
+          apellido,
+          email,
+          pwd,
+        });
+        setNombre("");
+        setApellido("");
+        setEmail("");
+        setPwd("");
+        setError('');
+        setRegistrado('Creado');
+        setTimeout(() => {
+          navigation.navigate('Login');
+        }, 1000)
+      } catch (error) {
+        console.error('Login error: ', error);
+        setError('Mail ya existente ');
+        setRegistrado('');
       }
+    }
+  };
 
-return (
-  <View style={styles.container}>
-    <Text style={styles.textRegister}>Register</Text>
-    <TextInput style={styles.textInput} placeholder="Nombre" onChangeText={(text) => setUser(text)}/>
-    <TextInput style={styles.textInput} placeholder="Apellido" onChangeText={(text) => setApellido(text)}/>
-    <TextInput style={styles.textInput} placeholder="Email" onChangeText={(text) => setEmail(text)} />
-    <TextInput style={styles.textInput} placeholder="Contraseña" onChangeText={(text) => setPwd(text)}/>
-    <Pressable style={styles.buttonRg} onPress={handleRegister}>
-      <Text style={styles.text}>Registrarse</Text>
-    </Pressable>
-    {error ? <Text style={styles.errorText}>{error}</Text> : null}
-    {registrado ? <Text style={styles.registradoText}>{registrado}</Text> : null}
-    <Pressable style={styles.buttonVolver} onPress={() => { navigation.navigate('Login') }}>
-      <Text style={styles.textVolver}>Volver atrás</Text>
-    </Pressable>
-  </View>
-);
+  return (
+    <View style={styles.container}>
+      <Text style={styles.textRegister}>Register</Text>
+      <TextInput style={styles.textInput} placeholder="Nombre" onChangeText={(text) => setNombre(text)} />
+      <TextInput style={styles.textInput} placeholder="Apellido" onChangeText={(text) => setApellido(text)} />
+      <TextInput style={styles.textInput} placeholder="Email" onChangeText={(text) => setEmail(text)} />
+      <TextInput style={styles.textInput} placeholder="Contraseña" onChangeText={(text) => setPwd(text)} />
+      <Pressable style={styles.buttonRg} onPress={handleRegister}>
+        <Text style={styles.text}>Registrarse</Text>
+      </Pressable>
+      {error ? <Text style={styles.errorText}>{error}</Text> : null}
+      {registrado ? <Text style={styles.registradoText}>{registrado}</Text> : null}
+      <Pressable style={styles.buttonVolver} onPress={() => { navigation.navigate('Login') }}>
+        <Text style={styles.textVolver}>Volver atrás</Text>
+      </Pressable>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
@@ -113,7 +122,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 20,
     borderRadius: 25,
-    alignItems:'center',
+    alignItems: 'center',
     justifyContent: 'center',
     marginTop: 7,
     backgroundColor: 'black'

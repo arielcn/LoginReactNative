@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { StatusBar } from 'expo-status-bar';
-import { Button, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigation } from '@react-navigation/native';
 
 function Login() {
@@ -18,18 +19,17 @@ function Login() {
     }
     else {
       try {
-        const response = await axios.post('http://localhost:5000/usuario/login', {
-          usuario: {
-            Mail: mail,
-            Contraseña: pwd
-          }
-        });
-        console.log(response);
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, mail, pwd)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          // ...
+        })
         setError('');
         setLogeado('Logeado');
         setTimeout(() => {
-          const usuario = response.data;
-          navigation.navigate('Home', { usuario });
+          navigation.navigate('Home');
         }, 1000);
       } catch (e) {
         console.error('Login error: ', e);
