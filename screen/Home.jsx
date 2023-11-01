@@ -31,18 +31,18 @@ function Home() {
 
 
   return (
-    <View style={styles.container}>
-      <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-        <Text style={styles.title}>¡BIENVENIDO, {userData.nombre}!</Text>
-        <Button
-          style={styles.botonPerfil}
-          onPress={() => {
-            navigation.navigate("EditarPerfil");
-          }}
-          title="Editar perfil"
-        />
-      </ImageBackground>
-    </View>
+      <View style={styles.container}>
+        <ImageBackground source={image} resizeMode="cover" style={styles.image}>
+          <Text style={styles.title}>¡BIENVENIDO, {userData.nombre}!</Text>
+          <Button
+            style={styles.botonPerfil}
+            onPress={() => {
+              navigation.navigate("EditarPerfil");
+            }}
+            title="Editar perfil"
+          />
+        </ImageBackground>
+      </View>
   );
 }
 
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    color: 'black',
+    color: 'white',
     fontWeight: 'bold',
     fontSize: 36,
     marginBottom: 20,

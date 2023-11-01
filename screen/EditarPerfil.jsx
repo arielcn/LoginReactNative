@@ -1,39 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { getAuth } from "firebase/auth";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import axios from "axios";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 
-function EditarPerfil({ route }) {
+
+function EditarPerfil() {
   const navigation = useNavigation();
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
-  const [mail, setMail] = useState("");
-  const [id, setId] = useState();
-  const { usuario } = route.params;
 
-  useEffect(() => {
-    setId(usuario.id)
-    setNombre(usuario.Nombre  || "");
-    setApellido(usuario.Apellido || "");
-    setMail(usuario.Mail || "");
-  }, []);
-
-
-  const handleEdit = () => {
-    try {
-      const response = axios.put(`http://localhost:5000/usuario/update/${usuario.id}`, {
-        usuario: {
-          Id: id,
-          Nombre: nombre,
-          Apellido: apellido,
-          Mail: mail,
-        }
-      });
-      navigation.navigate('Perfil', {usuario});
-
-    } catch (e) {
-      console.error('error: ', e);
-    }
+  const handleEdit = async () =>{
+    const auth = getAuth();
+    let { uid } = auth.currentUser.uid;
+    const db = getFirestore();
+    await setDoc(doc(db, "users", uid), {
+      nombre,
+      apellido,
+      email,
+      pwd,
+    });
+    navigation.navigate('Home');
   }
 
   return (
@@ -51,12 +38,7 @@ function EditarPerfil({ route }) {
         placeholder="Apellido"
         onChangeText={(text) => setApellido(text)}
       />
-      <TextInput
-        style={styles.TextInput}
-        value={mail}
-        placeholder="Mail"
-        onChangeText={(text) => setMail(text)}
-      />
+
       <Button onPress={handleEdit} title='Guardar' type="submit" />
 
     </View>
