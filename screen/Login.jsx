@@ -3,9 +3,22 @@ import axios from 'axios';
 import { StatusBar } from 'expo-status-bar';
 import { Button, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
 function Login() {
 
+  const firebaseConfig = {
+    apiKey: "AIzaSyBmT4KkrBuOTRcDHowKa--bBBFA-9B4gQ0",
+    authDomain: "loginreact-da6c0.firebaseapp.com",
+    projectId: "loginreact-da6c0",
+    storageBucket: "loginreact-da6c0.appspot.com",
+    messagingSenderId: "703708462774",
+    appId: "1:703708462774:web:1a3bd5cd3916b0ff1cf017",
+    measurementId: "G-HLDTHL2QQG"
+  };
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
   const navigation = useNavigation();
   const [pwd, setPwd] = useState('');
   const [mail, setMail] = useState('');
