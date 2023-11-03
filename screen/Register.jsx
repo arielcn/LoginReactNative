@@ -32,6 +32,7 @@ const Register = () => {
           apellido,
           email,
           pwd,
+          uid,
         });
         setNombre("");
         setApellido("");

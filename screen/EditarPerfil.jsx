@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { getAuth } from "firebase/auth";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { getFirestore, doc, updateDoc } from "firebase/firestore";
 
 
 function EditarPerfil() {
@@ -12,13 +12,11 @@ function EditarPerfil() {
 
   const handleEdit = async () =>{
     const auth = getAuth();
-    let { uid } = auth.currentUser.uid;
+    let uid = auth.currentUser.uid;
     const db = getFirestore();
-    await setDoc(doc(db, "users", uid), {
+    await updateDoc(doc(db, "users", uid), {
       nombre,
-      apellido,
-      email,
-      pwd,
+      apellido
     });
     navigation.navigate('Home');
   }
