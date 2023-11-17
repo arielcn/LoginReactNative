@@ -5,37 +5,41 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function Perfil({ route }) {
-  const [nombre, setNombre] = useState("");
-  const [apellido, setApellido] = useState("");
-  const [mail, setMail] = useState("");
+  const [userData, setUserData] = useState('')
   const navigation = useNavigation();
-  const { usuario } = route.Textarams;
 
 
   useEffect(() => {
-    try {
-      const res = axios.get(`httText://localhost:5000/usuario/${usuario.id}`);
-      setNombre(res.nombre)
-      setApellido(res.apellido)
-      setMail(res.mail)
-    } catch (e) {
-      console.error('get error: ', e);
+    const fetchDataFirestore = async () => {
+      const auth = getAuth();
+      const db = getFirestore();
+
+      const userRef = doc(collection(db, 'users'), auth.currentUser.uid)
+      const userDoc = await getDoc(userRef);
+      console.log(userDoc.data());
+
+      if (userDoc.exists) {
+        setUserData(userDoc.data());
+      } else {
+        setUserData(null);
+      }
     }
+    fetchDataFirestore();
   })
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Mi perfil</Text>
       <Text>Nombre:</Text>
-      {nombre !== null ? <Text>{nombre}</Text> : <Text>-</Text>}
+      {userData.nombre !== null ? <Text>{userData.nombre}</Text> : <Text>-</Text>}
       <Text>Apellido:</Text>
-      {apellido !== null ? <Text>{apellido}</Text> : <Text>-</Text>}
+      {userData.apellido !== null ? <Text>{userData.apellido}</Text> : <Text>-</Text>}
       <Text>Email:</Text>
-      {mail !== null ? <Text>{mail}</Text> : <Text>-</Text>}
+      {userData.mail !== null ? <Text>{userData.mail}</Text> : <Text>-</Text>}
       <Button
           style={styles.botonPerfil}
           onPress={() => {
-            navigation.navigate("EditarPerfil", {usuario});
+            navigation.navigate("EditarPerfil");
           }}
           title="Editar Perfil"
         />
