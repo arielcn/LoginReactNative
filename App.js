@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { NavigationContainer } from "@react-navigation/native";
@@ -7,7 +8,6 @@ import Register from './screen/Register';
 import Home from "./screen/Home";
 import Perfil from "./screen/Perfil";
 import EditarPerfil from "./screen/EditarPerfil";
-import React, { useEffect, useState } from "react";
 import DetalleProducto from "./screen/DetalleProducto";
 import CarritoContext from "./context/CarritoContext";
 
@@ -53,7 +53,7 @@ export default function App() {
           <Stack.Screen name='Login' component={Login} />
           <Stack.Screen name='Register' component={Register} />
           <Stack.Screen name='Home' component={Home} />
-          <Stack.Screen name='Producto' component={DetalleProducto} />
+          <Stack.Screen name='DetalleProducto' component={DetalleProducto} />
           <Stack.Screen name='EditarPerfil' component={EditarPerfil} />
           <Stack.Screen name='Perfil' component={Perfil} />
         </Stack.Navigator>
