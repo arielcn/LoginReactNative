@@ -118,6 +118,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    padding: 20,
   },
   botonPerfil: {
     width: 50,
@@ -131,10 +132,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 36,
     marginBottom: 20,
-  },
-  container: {
-    flex: 1,
-    padding: 20,
   },
   title: {
     fontSize: 24,
