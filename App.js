@@ -9,6 +9,8 @@ import Home from "./screen/Home";
 import Perfil from "./screen/Perfil";
 import EditarPerfil from "./screen/EditarPerfil";
 import DetalleProducto from "./screen/DetalleProducto";
+import Carrito from "./screen/Carrito";
+import Checkout from "./screen/Checkout";
 import CarritoContext from "./context/CarritoContext";
 
 
@@ -54,7 +56,9 @@ export default function App() {
           <Stack.Screen name='Register' component={Register} />
           <Stack.Screen name='Home' component={Home} />
           <Stack.Screen name='DetalleProducto' component={DetalleProducto} />
+          <Stack.Screen name='Carrito' component={Carrito} />
           <Stack.Screen name='EditarPerfil' component={EditarPerfil} />
+          <Stack.Screen name='Checkout' component={Checkout} />
           <Stack.Screen name='Perfil' component={Perfil} />
         </Stack.Navigator>
       </CarritoContext.Provider>

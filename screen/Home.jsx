@@ -51,7 +51,7 @@ function Home() {
         console.log(producto);
         navigation.navigate('DetalleProducto', { prod: producto });
       })
-      .catch(error => {
+      .catch(error => { 
         console.error(error);
       });
   };
