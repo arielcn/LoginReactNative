@@ -2,12 +2,13 @@ import { View } from "react-native-web";
 import { StyleSheet, Button } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import { Text } from "react-native";
+import { getAuth } from "firebase/auth";
+import { getFirestore, doc, getDoc, collection } from "firebase/firestore";
 
-function Perfil({ route }) {
+function Perfil() {
   const [userData, setUserData] = useState('')
   const navigation = useNavigation();
-
 
   useEffect(() => {
     const fetchDataFirestore = async () => {

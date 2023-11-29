@@ -1,63 +1,34 @@
-import axios from 'axios';
-import React, { useEffect, useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { getAuth } from "firebase/auth";
-import { collection, doc, getDoc, getFirestore } from "firebase/firestore";
-import { TouchableOpacity, FlatList, Image } from 'react-native';
+import React, { useState } from "react";
+import { StyleSheet } from "react-native";
+import { View, TextInput, Text, TouchableOpacity } from "react-native";
+import { FlatList, Image } from "react-native";
+import axios from "axios";
 
-function Home() {
-  const navigation = useNavigation();
-  const [userData, setUserData] = useState('')
-  const [productos, setProductos] = useState([]);
+const Buscador = () => {
   const [buscador, setBuscador] = useState('');
-  useEffect(() => {
-    fetchProductos();
-    console.log('entrasT?')
-    const fetchDataFirestore = async () => {
-      const auth = getAuth();
-      const db = getFirestore();
-
-      const userRef = doc(collection(db, 'users'), auth.currentUser.uid)
-      const userDoc = await getDoc(userRef);
-      console.log(userDoc.data());
-
-      if (userDoc.exists) {
-        setUserData(userDoc.data());
-      } else {
-        setUserData(null);
-      }
-    }
-    fetchDataFirestore();
-  }, []);
-
-  const limit = 10;
-  const fetchProductos = () => {
-    axios.get(`https://dummyjson.com/products?limit=${limit}`)
+  const [productos, setProductos] = useState()
+  const handleSearch = () => {
+    axios.get(`https://dummyjson.com/products/search?q=${buscador}`)
       .then(response => {
         setProductos(response.data.products);
       })
       .catch(error => {
         console.error(error);
       });
-    console.log(productos);
   };
-
-  const fetchProductoInfo = (id) => {
-    axios.get(`https://dummyjson.com/products/${id}`)
-      .then(response => {
-        const producto = response.data;
-        console.log(producto);
-        navigation.navigate('DetalleProducto', { prod: producto });
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  };
-
-
   return (
     <View style={styles.container}>
+      <View style={styles.searchContainer}>
+        <TextInput
+          style={styles.searchInput}
+          value={buscador}
+          onChangeText={(text) => setBuscador(text)}
+          placeholder="Buscar"
+        />
+        <TouchableOpacity style={styles.searchButton} onPress={handleSearch}>
+          <Text>Buscar</Text>
+        </TouchableOpacity>
+      </View>
       <FlatList
         data={productos}
         keyExtractor={(producto) => producto.id.toString()}
@@ -72,10 +43,11 @@ function Home() {
           </View>
         )}
       />
-
     </View>
   );
 }
+
+export default Buscador;
 
 const styles = StyleSheet.create({
   container: {
@@ -148,16 +120,3 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-
-export default Home;
-
-
-
-
-
-
-
-
-
-
-

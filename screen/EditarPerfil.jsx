@@ -4,7 +4,6 @@ import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { getFirestore, doc, updateDoc } from "firebase/firestore";
 
-
 function EditarPerfil() {
   const navigation = useNavigation();
   const [nombre, setNombre] = useState("");
@@ -12,9 +11,9 @@ function EditarPerfil() {
 
   const handleEdit = async () =>{
     const auth = getAuth();
-    let uid = auth.currentUser.uid;
+    let id = auth.currentUser.uid;
     const db = getFirestore();
-    await updateDoc(doc(db, "users", uid), {
+    await updateDoc(doc(db, "users", id), {
       nombre,
       apellido
     });

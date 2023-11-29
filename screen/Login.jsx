@@ -28,7 +28,7 @@ function Login() {
         setError('');
         setLogeado('Logeado');
         setTimeout(() => {
-          navigation.navigate('Home');
+          navigation.navigate('BottomTab');
         }, 1000);
       } catch (e) {
         console.error('Login error: ', e);
