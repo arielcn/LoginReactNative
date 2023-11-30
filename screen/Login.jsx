@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Pressable, StyleSheet, Text, TextInput, View, Image } from 'react-native';
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigation } from '@react-navigation/native';
+
 
 function Login() {
 
@@ -20,11 +21,11 @@ function Login() {
       try {
         const auth = getAuth();
         signInWithEmailAndPassword(auth, mail, pwd)
-        .then((userCredential) => {
-          // Signed in 
-          const user = userCredential.user;
-          // ...
-        })
+          .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            // ...
+          })
         setError('');
         setLogeado('Logeado');
         setTimeout(() => {
@@ -40,6 +41,7 @@ function Login() {
 
   return (
     <View style={styles.container}>
+      <Image source={require('../assets/Delta.png')} style={styles.delta} />
       <Text style={styles.textLogin}>Login</Text>
       <TextInput style={styles.textInput} placeholder="Mail" onChangeText={(text) => setMail(text)} />
       <TextInput style={styles.textInput} placeholder="Contraseña" onChangeText={(text) => setPwd(text)} />
@@ -48,7 +50,7 @@ function Login() {
         <Text style={styles.text}>Logearse</Text>
       </Pressable>
       {logeado ? <Text style={styles.logeadoText}>{logeado}</Text> : null}
-        <Text>¿No tienes cuenta? <Text style={styles.texto2} onPress={() => { navigation.navigate('Register') }}>Registrarse</Text></Text>
+      <Text>¿No tienes cuenta? <Text style={styles.texto2} onPress={() => { navigation.navigate('Register') }}>Registrarse</Text></Text>
       <StatusBar style="auto" />
     </View>
   );
@@ -60,6 +62,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  delta: {
+    width: 450,
+    height: 200,
   },
   textLogin: {
     marginBottom: 25,

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TextInput, View, Pressable } from 'react-native';
+import { StyleSheet, Text, TextInput, View, Pressable, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
@@ -53,6 +53,7 @@ const Register = () => {
 
   return (
     <View style={styles.container}>
+      <Image source={require('../assets/Delta.png')} style={styles.delta} />
       <Text style={styles.textRegister}>Register</Text>
       <TextInput style={styles.textInput} placeholder="Nombre" onChangeText={(text) => setNombre(text)} />
       <TextInput style={styles.textInput} placeholder="Apellido" onChangeText={(text) => setApellido(text)} />
@@ -76,6 +77,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  delta: {
+    width: 450,
+    height: 200,
   },
   textRegister: {
     marginBottom: 25,
