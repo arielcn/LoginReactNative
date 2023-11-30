@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { View, Text, Image, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CarritoContext from '../context/CarritoContext';
+import { Button } from '@rneui/base';
 
 function Carrito() {
     const { listCarrito, setListCarrito } = useContext(CarritoContext);
@@ -14,26 +15,19 @@ function Carrito() {
     };
 
     const renderItem = ({ item }) => (
-        <View key={item.id} style={{ marginVertical: 10 }}>
+        <View key={item.id} style={styles.productItem}>
             {item.images[0] && (
                 <Image
-                    style={{ width: '100%', height: 150 }}
+                    style={styles.productImage}
                     source={{ uri: item.images[0] }}
                     resizeMode="cover"
                 />
             )}
-            <Text>{item.title}</Text>
-            <TouchableOpacity onPress={() => eliminarProducto(item.id)}>
-                <Text style={{ color: 'red' }}>Eliminar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-                onPress={() => {
-                    // Implement your buy logic here
-                }}
-            >
-                <Text style={{ color: 'green' }}>Comprar</Text>
-            </TouchableOpacity>
-            <Text>U$D{item.price}</Text>
+                <TouchableOpacity onPress={() => eliminarProducto(item.id)}>
+                    <Button style={styles.buttonEliminar}>Eliminar</Button>
+                </TouchableOpacity>
+            <Text style={styles.productTitle}>{item.title}</Text>
+            <Text style>Precio: U$D{item.price}</Text>
         </View>
     );
 
@@ -62,14 +56,31 @@ function Carrito() {
             </View>
         </View>
     );
-
 }
-const styles = StyleSheet.create({
 
+const styles = StyleSheet.create({
     container: {
         flex: 1,
         padding: 10,
-        backgroundColor: '#ffffff', // Set your desired background color
+        backgroundColor: '#ffffff',
+    },
+    productItem: {
+        marginBottom: 20,
+        padding: 10,
+        borderWidth: 1,
+        borderColor: '#ddd',
+        borderRadius: 10,
+    },
+    productTitle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 5,
+    },
+    productImage: {
+        width: '100%',
+        height: 150,
+        resizeMode: 'cover',
+        marginBottom: 5,
     },
     buttonContainer: {
         alignItems: 'center',
@@ -81,6 +92,10 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         borderRadius: 5,
     },
+    buttonEliminar: {
+        color: 'red',
+        padding: 10,
+    },
     button2: {
         backgroundColor: 'blue',
         paddingVertical: 10,
@@ -91,7 +106,6 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
     },
-  })
+});
 
 export default Carrito;
-

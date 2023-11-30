@@ -7,6 +7,7 @@ import axios from "axios";
 const Buscador = () => {
   const [buscador, setBuscador] = useState('');
   const [productos, setProductos] = useState()
+
   const handleSearch = () => {
     axios.get(`https://dummyjson.com/products/search?q=${buscador}`)
       .then(response => {
@@ -16,6 +17,20 @@ const Buscador = () => {
         console.error(error);
       });
   };
+
+  const fetchProductoInfo = (id) => {
+    axios.get(`https://dummyjson.com/products/${id}`)
+      .then(response => {
+        const producto = response.data;
+        console.log(producto);
+        navigation.navigate('DetalleProducto', { prod: producto });
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
+
   return (
     <View style={styles.container}>
       <View style={styles.searchContainer}>
